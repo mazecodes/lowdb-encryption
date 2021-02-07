@@ -44,7 +44,7 @@ const lowdbEncryption = (options = {}) => {
       const json = JSON.parse(data);
 
       if (!json._encryption) {
-        return data;
+        return json;
       }
 
       const { salt: _salt, iterations: _iterations } = json._encryption;
