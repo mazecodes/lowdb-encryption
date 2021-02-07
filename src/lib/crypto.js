@@ -11,7 +11,7 @@ const CryptoJS = require('crypto-js');
  *   generateSalt(10)
  */
 const generateSalt = (length = 16) =>
-  CryptoJS.lib.WordArray.random(length).toString(CryptoJS.enc.Hex);
+  CryptoJS.lib.WordArray.random(length).toString(CryptoJS.enc.Base64);
 
 /**
  * Generate a key from a secret
@@ -29,7 +29,7 @@ const generateKey = (secret, salt, iterations = 100000) =>
   CryptoJS.PBKDF2(secret, salt, {
     keySize: 256 / 32,
     iterations,
-  }).toString(CryptoJS.enc.Hex);
+  }).toString(CryptoJS.enc.Base64);
 
 /**
  * Encrypt the given state
@@ -44,7 +44,7 @@ const generateKey = (secret, salt, iterations = 100000) =>
 const encryptState = (state, key) => {
   const encryptedState = CryptoJS.AES.encrypt(state, key).toString();
   const signature = CryptoJS.HmacSHA256(encryptedState, key).toString(
-    CryptoJS.enc.hex
+    CryptoJS.enc.Base64
   );
 
   return {
