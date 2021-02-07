@@ -5,9 +5,9 @@ const lowdbEncryption = (options = {}) => {
   validateOptions(options);
 
   const { secret } = options;
-  const iterations = options.iterations || 100000;
+  let iterations = options.iterations || 100000;
 
-  const salt = crypto.generateSalt();
+  let salt = crypto.generateSalt();
   let key;
 
   return {
@@ -33,6 +33,46 @@ const lowdbEncryption = (options = {}) => {
       };
 
       return JSON.stringify(stateObject);
+    },
+    /**
+     * Decryption
+     */
+    deserialize(data) {
+      const json = JSON.parse(data);
+
+      if (!json._encryption) {
+        return data;
+      }
+
+      const { salt: _salt, iterations: _iterations } = json._encryption;
+
+      salt = _salt || salt;
+      iterations = typeof _iterations === 'number' ? _iterations : iterations;
+
+      if (!key) {
+        key = crypto.generateKey(secret, salt, iterations);
+      }
+
+      const stateContent = json.state.content;
+      const stateSignature = json.state.signature;
+
+      if (!stateContent || !stateSignature) {
+        throw new Error('The state is not valid');
+      }
+
+      const isSignatureValid = crypto.isSignatureValid(
+        stateContent,
+        stateSignature,
+        key
+      );
+
+      if (!isSignatureValid) {
+        throw new Error('The state has been altered');
+      }
+
+      const decryptedState = crypto.decryptState(stateContent, key);
+
+      return JSON.parse(decryptedState);
     },
   };
 };
