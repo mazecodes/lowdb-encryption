@@ -1,0 +1,20 @@
+{
+  "name": "lowdb-encryption",
+  "version": "0.1.0",
+  "description": "Lowdb add-on for encryption.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mazecodes/lowdb-encryption.git"
+  },
+  "keywords": [],
+  "author": "Maze Peterson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mazecodes/lowdb-encryption/issues"
+  },
+  "homepage": "https://github.com/mazecodes/lowdb-encryption#readme"
+}
