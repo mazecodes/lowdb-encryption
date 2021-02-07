@@ -71,9 +71,29 @@ const decryptState = (encryptedState, key) => {
   return decryptedState;
 };
 
+/**
+ * Check if a signature is valid
+ *
+ * @param {String} encryptedState - The ecnrypted state
+ * @param {String} signature - The given signatire
+ * @param {String} key - The key used for encryption and signing
+ * @returns {Boolean} - True if the state was valid
+ *
+ * @example
+ *   isStateValid(encryptedState, signature, 'key')
+ */
+const isStateValid = (encryptedState, signature, key) => {
+  const sig = CryptoJS.HmacSHA256(encryptedState, key).toString(
+    CryptoJS.enc.Base64
+  );
+
+  return sig === signature;
+};
+
 module.exports = {
   generateSalt,
   generateKey,
   encryptState,
   decryptState,
+  isStateValid,
 };
