@@ -1,3 +1,7 @@
 const crypto = require('../src/lib/crypto');
 
-console.log(crypto.generateSalt());
+const salt = crypto.generateSalt();
+const key = crypto.generateKey('secret', salt);
+
+console.log(salt);
+console.log(key);
