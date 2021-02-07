@@ -47,10 +47,10 @@ const lowdbEncryption = (options = {}) => {
         return json;
       }
 
-      const { salt: _salt, iterations: _iterations } = json._encryption;
+      const { salt: s, iterations: iter } = json._encryption;
 
-      salt = _salt || salt;
-      iterations = typeof _iterations === 'number' ? _iterations : iterations;
+      salt = s || salt;
+      iterations = typeof iter === 'number' ? iter : iterations;
 
       if (!key) {
         key = crypto.generateKey(secret, salt, iterations);
