@@ -19,7 +19,10 @@ const lowdbEncryption = (options = {}) => {
         key = crypto.generateKey(secret, salt, iterations);
       }
 
-      const { state, signature } = crypto.encryptState(data);
+      const { state, signature } = crypto.encryptState(
+        JSON.stringify(data),
+        key
+      );
 
       const stateObject = {
         _encryption: {
