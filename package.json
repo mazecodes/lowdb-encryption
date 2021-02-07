@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/mazecodes/lowdb-encryption/issues"
   },
-  "homepage": "https://github.com/mazecodes/lowdb-encryption#readme"
+  "homepage": "https://github.com/mazecodes/lowdb-encryption#readme",
+  "devDependencies": {
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-node": "^4.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0"
+  }
 }
