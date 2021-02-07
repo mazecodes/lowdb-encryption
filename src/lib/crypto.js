@@ -80,9 +80,9 @@ const decryptState = (encryptedState, key) => {
  * @returns {Boolean} - True if the state was valid
  *
  * @example
- *   isStateValid(encryptedState, signature, 'key')
+ *   isSignatureValid(encryptedState, signature, 'key')
  */
-const isStateValid = (encryptedState, signature, key) => {
+const isSignatureValid = (encryptedState, signature, key) => {
   const sig = CryptoJS.HmacSHA256(encryptedState, key).toString(
     CryptoJS.enc.Base64
   );
@@ -95,5 +95,5 @@ module.exports = {
   generateKey,
   encryptState,
   decryptState,
-  isStateValid,
+  isSignatureValid,
 };
