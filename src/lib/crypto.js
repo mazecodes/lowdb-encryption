@@ -53,8 +53,27 @@ const encryptState = (state, key) => {
   };
 };
 
+/**
+ * Decrypt the given state
+ *
+ * @param {String} encryptedState - The encrypted state
+ * @param {String} key - The key used for encryption
+ * @returns {String} - The decrypted state
+ *
+ * @example
+ *   decryptState(encryptedState, 'key')
+ */
+const decryptState = (encryptedState, key) => {
+  const decryptedState = CryptoJS.AES.decrypt(encryptedState, key).toString(
+    CryptoJS.enc.Utf8
+  );
+
+  return decryptedState;
+};
+
 module.exports = {
   generateSalt,
   generateKey,
   encryptState,
+  decryptState,
 };
