@@ -32,3 +32,20 @@ GitHub:
 ```bash
 git clone https://github.com/mazecodes/lowdb-encryption.git
 ```
+
+## Usage
+
+```javascript
+const lowdb = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const lowdbEncryption = require('lowdb-encryption');
+
+const adapter = new FileSync('db.json', {
+  ...lowdbEncryption({
+    secret: 's3cr3t',
+    iterations: 100_000,
+  }),
+});
+
+const db = lowdb(adapter);
+```
