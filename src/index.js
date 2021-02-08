@@ -68,12 +68,12 @@ const lowdbEncryption = (options = {}) => {
      */
     deserialize(data) {
       const json = JSON.parse(data);
+      const { _encryption } = json;
 
-      if (!json._encryption) {
+      if (!_encryption) {
         return json;
       }
 
-      const { _encryption } = json;
       const s = _encryption.salt;
       const iter = _encryption.iterations;
 
