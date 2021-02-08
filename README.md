@@ -49,3 +49,7 @@ const adapter = new FileSync('db.json', {
 
 const db = lowdb(adapter);
 ```
+
+## Encryption Details
+
+Lowdb Encryption uses **PBKDF2** for key derivation with `100,000` iterations set by default and uses **AES256** in **CBC mode** for encryption. It also uses **HMAC-SHA256** for signing and validation the state.
