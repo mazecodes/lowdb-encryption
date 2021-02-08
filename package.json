@@ -2,7 +2,7 @@
   "name": "lowdb-encryption",
   "version": "0.1.0",
   "description": "Lowdb add-on for encryption.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint \"./**/*.js\"",
     "lint:fix": "npm run lint -- --fix",
@@ -12,7 +12,15 @@
     "type": "git",
     "url": "git+https://github.com/mazecodes/lowdb-encryption.git"
   },
-  "keywords": [],
+  "keywords": [
+    "lowdb",
+    "ecnryption",
+    "add-on",
+    "database",
+    "crypto",
+    "json",
+    "storage"
+  ],
   "author": "Maze Peterson",
   "license": "MIT",
   "bugs": {
