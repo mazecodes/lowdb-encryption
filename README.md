@@ -66,3 +66,11 @@ Please feel free to check [issues page](https://github.com/mazecodes/lowdb-encry
 1. Commit your changes (`git commit -m "Add Awesome Feature"`)
 1. Push to the branch (`git push origin feature/AwesomeFeature`)
 1. Open a Pull Request
+
+## Author
+
+Maze Peterson:
+
+- Twitter: [mazecodes](https://twitter.com/mazecodes)
+- GitHub: [mazecodes](https://github.com/mazecodes)
+- npm: [mazecodes](https://npmjs.com/~mazecodes)
