@@ -50,7 +50,7 @@ const adapter = new FileSync('db.json', {
 const db = lowdb(adapter);
 ```
 
-`iterations` is the number of iterations used for key derivation. The encryption key will be derived from `secret`. (`iterations` is set to 100,000 by default)
+`iterations` is the number of iterations used for key derivation. The encryption key will be derived from `secret`. (Iterations is set to 100,000 by default)
 
 ## Encryption Details
 
