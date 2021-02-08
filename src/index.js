@@ -1,6 +1,20 @@
 const { validateOptions } = require('./lib/validator');
 const crypto = require('./lib/crypto');
 
+/**
+ * Create serializer and deserializer
+ *
+ * @param {Object} [options] - The options object
+ * @param {String} [options.secret] - The encryption secret
+ * @param {Number} [options.iterations] - PBKDF2 iterations count
+ * @returns {Object} - Serializer and deserializer
+ *
+ * @example
+ *   lowdbEncryption({
+ *     secret: 'secret',
+ *     iterations: 50000
+ *   })
+ */
 const lowdbEncryption = (options = {}) => {
   validateOptions(options);
 
@@ -12,7 +26,13 @@ const lowdbEncryption = (options = {}) => {
 
   return {
     /**
-     * Encryption
+     * Serialize and encrypt the state
+     *
+     * @param {Object} data - The lowdb state
+     * @returns {String} - Encrypted and serialized state
+     *
+     * @example
+     *   serialize({ foo: 'bar' })
      */
     serialize(data) {
       if (!key) {
@@ -38,7 +58,13 @@ const lowdbEncryption = (options = {}) => {
       return JSON.stringify(stateObject);
     },
     /**
-     * Decryption
+     * Decrypt and deserialize the state
+     *
+     * @param {String} data - Encrypted and serialized state
+     * @returns {Object} - Decrypted and deserialized state
+     *
+     * @example
+     *   deserialize('{ foo: "bar" }')
      */
     deserialize(data) {
       const json = JSON.parse(data);
