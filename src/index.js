@@ -47,7 +47,9 @@ const lowdbEncryption = (options = {}) => {
         return json;
       }
 
-      const { salt: s, iterations: iter } = json._encryption;
+      const { _encryption } = json;
+      const s = _encryption.salt;
+      const iter = _encryption.iterations;
 
       salt = s || salt;
       iterations = typeof iter === 'number' ? iter : iterations;
@@ -63,13 +65,13 @@ const lowdbEncryption = (options = {}) => {
         throw new Error('The state is not valid');
       }
 
-      const isSignatureValid = crypto.isSignatureValid(
+      const isStateValid = crypto.isStateValid(
         stateContent,
         stateSignature,
         key
       );
 
-      if (!isSignatureValid) {
+      if (!isStateValid) {
         throw new Error('The state has been altered');
       }
 
