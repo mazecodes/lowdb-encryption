@@ -42,7 +42,9 @@ const generateKey = (secret, salt, iterations = 100000) =>
  *   encryptState('{ foo: "bar" }', 'key')
  */
 const encryptState = (state, key) => {
-  const encryptedState = CryptoJS.AES.encrypt(state, key).toString();
+  const encryptedState = CryptoJS.AES.encrypt(state, key, {
+    mode: CryptoJS.mode.CBC,
+  }).toString();
   const signature = CryptoJS.HmacSHA256(encryptedState, key).toString(
     CryptoJS.enc.Base64
   );
@@ -64,9 +66,9 @@ const encryptState = (state, key) => {
  *   decryptState(encryptedState, 'key')
  */
 const decryptState = (encryptedState, key) => {
-  const decryptedState = CryptoJS.AES.decrypt(encryptedState, key).toString(
-    CryptoJS.enc.Utf8
-  );
+  const decryptedState = CryptoJS.AES.decrypt(encryptedState, key, {
+    mode: CryptoJS.mode.CBC,
+  }).toString(CryptoJS.enc.Utf8);
 
   return decryptedState;
 };
