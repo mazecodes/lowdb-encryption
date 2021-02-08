@@ -78,3 +78,7 @@ Maze Peterson:
 ## Show your support
 
 Give a ⭐ if you liked this project!
+
+## License
+
+[MIT](https://github.com/mazecodes/lowdb-encryption/blob/master/LICENSE) © Maze Peterson
